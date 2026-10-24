@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت وظایف | اسپرینت اول</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="badge">اسپرینت اول • فاز اول</div>
+                <h1 class="app-title">سامانه مدیریت وظایف</h1>
+                <p class="app-subtitle">پروژه درس مهندسی نرم‌افزار — تیم رضا و آنتی</p>
+            </div>
+            <div class="header-meta">
+                <span class="status-indicator">پایگاه داده: SQLite متصل</span>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <!-- فرم ثبت وظیفه جدید -->
+            <section class="card form-card" aria-labelledby="form-heading">
+                <div class="card-header">
+                    <span class="card-icon" aria-hidden="true">➕</span>
+                    <h2 id="form-heading" class="card-title">ایجاد وظیفه جدید</h2>
+                </div>
+                
+                <form id="task-form" novalidate>
+                    <!-- فیلد عنوان -->
+                    <div class="form-group">
+                        <label for="task-title" class="form-label">
+                            عنوان وظیفه <span class="required-star" aria-hidden="true">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="task-title" 
+                            name="title" 
+                            class="form-input" 
+                            placeholder="مثال: طراحی دیاگرام معماری سیستم..." 
+                            required
+                            minlength="1"
+                            maxlength="150"
+                            autocomplete="off"
+                            aria-errormessage="title-error"
+                            aria-describedby="title-hint"
+                        >
+                        <div id="title-error" class="error-msg" role="alert">
+                            <span class="error-icon" aria-hidden="true">⚠️</span>
+                            <span>لطفاً عنوان وظیفه را وارد کنید (نمی‌تواند خالی یا فاصله باشد).</span>
+                        </div>
+                        <div id="title-hint" class="hint-text">عنوان وظیفه الزامی است و نباید بیش از ۱۵۰ کاراکتر باشد.</div>
+                    </div>
+
+                    <!-- فیلد توضیحات -->
+                    <div class="form-group">
+                        <label for="task-desc" class="form-label">توضیحات (اختیاری)</label>
+                        <textarea 
+                            id="task-desc" 
+                            name="description" 
+                            class="form-textarea" 
+                            rows="3" 
+                            placeholder="جزئیات و نکات تکمیلی مربوط به این وظیفه..."
+                            maxlength="1000"
+                        ></textarea>
+                    </div>
+
+                    <!-- دکمه ثبت -->
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="btn btn-primary">
+                            <span class="btn-text">ثبت و ذخیره وظیفه</span>
+                            <span class="spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- بخش نمایش فهرست وظایف -->
+            <section class="card list-card" aria-labelledby="list-heading">
+                <div class="card-header list-header">
+                    <div class="list-title-wrap">
+                        <span class="card-icon" aria-hidden="true">📋</span>
+                        <h2 id="list-heading" class="card-title">فهرست وظایف ثبت‌شده</h2>
+                    </div>
+                    <div class="list-stats">
+                        <span id="task-count-badge" class="count-badge">۰ وظیفه</span>
+                    </div>
+                </div>
+
+                <!-- پیام بازخورد / توست -->
+                <div id="alert-banner" class="alert-banner" role="status" aria-live="polite"></div>
+
+                <!-- لودینگ -->
+                <div id="loading-state" class="state-container hidden" aria-live="polite">
+                    <div class="loader-spinner"></div>
+                    <p>در حال بارگذاری وظایف از پایگاه داده...</p>
+                </div>
+
+                <!-- وضعیت خالی (Empty State) -->
+                <div id="empty-state" class="state-container hidden">
+                    <div class="empty-icon" aria-hidden="true">📭</div>
+                    <h3>هیچ وظیفه‌ای ثبت نشده است</h3>
+                    <p>با استفاده از فرم بالا اولین وظیفه خود را اضافه کنید.</p>
+                </div>
+
+                <!-- لیست کارت‌های تسک -->
+                <div id="tasks-container" class="tasks-container"></div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>درس مهندسی نرم‌افزار — فاز ۱ (اسپرینت ۱) — متدولوژی چابک اسکرام</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
