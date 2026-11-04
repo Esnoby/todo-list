@@ -1,26 +1,65 @@
 :root {
-    --primary: #4f46e5;
-    --primary-hover: #4338ca;
-    --primary-light: #eef2ff;
-    --success: #15803d;
-    --success-light: #f0fdf4;
-    --danger: #b91c1c;
-    --danger-light: #fef2f2;
-    --warning: #b45309;
-    --warning-light: #fffbeb;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-muted: #94a3b8;
-    --bg-page: #f8fafc;
-    --bg-card: #ffffff;
-    --border: #e2e8f0;
-    --border-focus: #6366f1;
-    --radius-lg: 16px;
-    --radius-md: 12px;
-    --radius-sm: 8px;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+    color-scheme: dark;
+
+    /* پالت رنگی اختصاصی انتخابی */
+    --c-midnight: #0B132B;      /* پس‌زمینه اصلی صفحه */
+    --c-oxford: #1C2541;        /* سطح کارت‌های اصلی */
+    --c-steel: #3A506B;         /* سطح کارت‌های وظایف، فیلدها و کادرها */
+    --c-cyan: #5BC0DE;          /* اکسنت فیروزه‌ای روشن */
+    --c-cream: #F4D6B0;         /* کرم طلایی ملایم برای عناوین و هایلایت‌ها */
+    --c-amber: #D97706;         /* نارنجی کهربایی برای دکمه اصلی و وضعیت */
+
+    /* متغیرهای کاربردی و کنتراست بالا برای خوانایی متن فارسی */
+    --bg-page: var(--c-midnight);
+    --bg-card: var(--c-oxford);
+    --bg-elevated: #233052;
+    --bg-input: rgba(11, 19, 43, 0.65);
+
+    --text-primary: #F8FAFC;    /* سفید یخی با کنتراست بالای 13:1 روی سرمه‌ای */
+    --text-heading: var(--c-cream);
+    --text-secondary: #CBD5E1;  /* خاکستری-آبی روشن با کنتراست بالای 7:1 */
+    --text-muted: #94A3B8;      /* کنتراست استاندارد بالای 4.5:1 */
+
+    --primary: var(--c-amber);
+    --primary-hover: #E88813;
+    --accent-cyan: var(--c-cyan);
+    --accent-cream: var(--c-cream);
+
+    /* وضعیت‌های اعتبارسنجی با کنتراست بالا روی پس‌زمینه تیره */
+    --success: #34D399;
+    --success-bg: rgba(16, 185, 129, 0.16);
+    --success-border: rgba(52, 211, 153, 0.55);
+
+    --danger: #FCA5A5;
+    --danger-strong: #F87171;
+    --danger-bg: rgba(239, 68, 68, 0.16);
+    --danger-border: rgba(248, 113, 113, 0.65);
+
+    --border-subtle: rgba(91, 192, 222, 0.24);
+    --border-card: rgba(91, 192, 222, 0.32);
+    --border-focus: var(--c-cyan);
+
+    /* افکت لبه‌های براق و برجسته سه‌بعدی (Specular 3D Borders) */
+    --specular-card:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 2px 4px 0 rgba(91, 192, 222, 0.08),
+        inset 0 -2px 4px 0 rgba(0, 0, 0, 0.35),
+        0 14px 28px -6px rgba(4, 8, 20, 0.65),
+        0 4px 10px -2px rgba(4, 8, 20, 0.45);
+
+    --specular-item:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3),
+        0 6px 14px -3px rgba(6, 11, 26, 0.5);
+
+    --specular-button:
+        inset 0 1px 1px 0 rgba(255, 240, 215, 0.45),
+        inset 0 -2px 3px 0 rgba(0, 0, 0, 0.28),
+        0 6px 16px -2px rgba(217, 119, 6, 0.45);
+
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
     --font-family: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -33,12 +72,18 @@
 body {
     font-family: var(--font-family);
     background-color: var(--bg-page);
+    background-image:
+        radial-gradient(circle at 8% 22%, rgba(217, 119, 6, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 92% 18%, rgba(91, 192, 222, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(58, 80, 107, 0.25) 0%, transparent 55%);
+    background-attachment: fixed;
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: 1.75;
     direction: rtl;
     text-align: right;
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 2.25rem 1rem;
+    -webkit-font-smoothing: antialiased;
 }
 
 .page-container {
@@ -49,52 +94,61 @@ body {
     gap: 2rem;
 }
 
-/* Header */
+/* Header با استایل برجسته سه‌بعدی و ترکیب سرمه‌ای، کرم و فیروزه‌ای */
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #1C2541 0%, #273759 55%, #3A506B 100%);
+    color: var(--text-primary);
     padding: 2rem 2.5rem;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(91, 192, 222, 0.35);
+    box-shadow: var(--specular-card);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.25rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .badge {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0.25rem 0.75rem;
+    background: rgba(244, 214, 176, 0.14);
+    color: var(--c-cream);
+    border: 1px solid rgba(244, 214, 176, 0.38);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    padding: 0.28rem 0.9rem;
     border-radius: 9999px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
-    backdrop-filter: blur(4px);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.6rem;
 }
 
 .app-title {
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     font-weight: 800;
-    line-height: 1.3;
+    line-height: 1.35;
+    color: var(--c-cream);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .app-subtitle {
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    margin-top: 0.25rem;
+    font-size: 0.98rem;
+    color: #E2E8F0;
+    margin-top: 0.3rem;
+    font-weight: 400;
 }
 
 .status-indicator {
-    background: rgba(16, 185, 129, 0.2);
-    color: #6ee7b7;
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    font-size: 0.85rem;
-    padding: 0.4rem 0.9rem;
+    background: rgba(91, 192, 222, 0.16);
+    color: #A5F3FC;
+    border: 1px solid rgba(91, 192, 222, 0.45);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    font-size: 0.86rem;
+    padding: 0.45rem 1rem;
     border-radius: var(--radius-md);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Main Layout */
@@ -104,14 +158,14 @@ body {
     gap: 2rem;
 }
 
-/* Card */
+/* Card با لبه‌های براق و برجسته سه‌بعدی (Specular 3D) */
 .card {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, #212C4D 0%, var(--c-oxford) 100%);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
-    padding: 1.75rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border-card);
+    box-shadow: var(--specular-card);
+    padding: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card-header {
@@ -120,74 +174,89 @@ body {
     gap: 0.75rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .card-icon {
     font-size: 1.4rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--c-cream);
 }
 
 /* Form Styles */
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.35rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.45rem;
 }
 
 .form-label {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .required-star {
-    color: var(--danger);
+    color: var(--c-amber);
+    font-weight: 800;
 }
 
 .form-input, .form-textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.1rem;
     font-family: inherit;
-    font-size: 0.95rem;
-    border: 1.5px solid var(--border);
+    font-size: 0.98rem;
+    border: 1.5px solid #4A6484;
     border-radius: var(--radius-sm);
-    background-color: #fafbfc;
+    background-color: var(--bg-input);
     color: var(--text-primary);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.35),
+        0 1px 0 rgba(255, 255, 255, 0.08);
     transition: all 0.2s ease;
     outline: none;
 }
 
+.form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-muted);
+}
+
 .form-input:focus, .form-textarea:focus {
-    border-color: var(--border-focus);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    border-color: var(--c-cyan);
+    background-color: rgba(11, 19, 43, 0.88);
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.3),
+        0 0 0 3px rgba(91, 192, 222, 0.25);
 }
 
 /* Modern Web Guidance: :user-invalid and :user-valid rules */
 .form-input:user-invalid {
-    border-color: var(--danger);
-    background-color: var(--danger-light);
+    border-color: var(--danger-border);
+    background-color: var(--danger-bg);
 }
 
 .form-input:user-valid:not(:placeholder-shown) {
-    border-color: var(--success);
+    border-color: var(--success-border);
 }
 
 .error-msg {
     display: none;
     color: var(--danger);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 500;
     align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.25rem;
+    gap: 0.45rem;
+    margin-top: 0.3rem;
+    padding: 0.45rem 0.75rem;
+    background: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    border-radius: var(--radius-sm);
 }
 
 /* Show error message when user-invalid matches */
@@ -197,36 +266,43 @@ body {
 }
 
 .hint-text {
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     color: var(--text-secondary);
 }
 
-/* Button */
+/* Button با رنگ کهربایی (#D97706) و لبه براق سه‌بعدی */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.55rem;
     font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.75rem 1.75rem;
+    font-size: 1.02rem;
+    font-weight: 700;
+    padding: 0.82rem 2rem;
     border-radius: var(--radius-sm);
-    border: none;
+    border: 1px solid rgba(244, 214, 176, 0.35);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .btn-primary {
-    background-color: var(--primary);
-    color: #ffffff;
-    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+    background: linear-gradient(180deg, #EA8612 0%, var(--c-amber) 100%);
+    color: #FFFFFF;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--specular-button);
 }
 
 .btn-primary:hover:not(:disabled) {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+    background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 1px 2px 0 rgba(255, 245, 225, 0.55),
+        0 10px 20px -3px rgba(217, 119, 6, 0.55);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 .btn:disabled {
@@ -246,83 +322,96 @@ body {
 }
 
 .count-badge {
-    background: var(--primary-light);
-    color: var(--primary);
-    font-size: 0.85rem;
+    background: rgba(91, 192, 222, 0.18);
+    color: var(--c-cyan);
+    border: 1px solid rgba(91, 192, 222, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-size: 0.88rem;
     font-weight: 700;
-    padding: 0.35rem 0.8rem;
+    padding: 0.35rem 0.95rem;
     border-radius: 9999px;
 }
 
 /* Alert Banner */
 .alert-banner {
     display: none;
-    padding: 0.85rem 1.25rem;
+    padding: 0.9rem 1.25rem;
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
-    font-weight: 500;
-    margin-bottom: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.35rem;
+    box-shadow: var(--specular-item);
 }
 
 .alert-banner.success {
     display: flex;
-    background-color: var(--success-light);
-    color: var(--success);
-    border: 1px solid #bbf7d0;
+    background-color: var(--success-bg);
+    color: #6EE7B7;
+    border: 1px solid var(--success-border);
 }
 
 .alert-banner.error {
     display: flex;
-    background-color: var(--danger-light);
+    background-color: var(--danger-bg);
     color: var(--danger);
-    border: 1px solid #fecaca;
+    border: 1px solid var(--danger-border);
 }
 
 /* State Containers (Loading, Empty) */
 .state-container {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
     color: var(--text-secondary);
+    background: rgba(11, 19, 43, 0.4);
+    border: 1px dashed rgba(91, 192, 222, 0.3);
+    border-radius: var(--radius-md);
 }
 
 .empty-icon {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-bottom: 0.75rem;
 }
 
 .state-container h3 {
-    color: var(--text-primary);
-    font-size: 1.15rem;
-    margin-bottom: 0.35rem;
+    color: var(--c-cream);
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
 }
 
 .hidden {
     display: none !important;
 }
 
-/* Tasks Grid/List */
+/* Tasks Grid/List - استفاده از #3A506B و لبه‌های سه‌بعدی */
 .tasks-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.1rem;
 }
 
 .task-item {
-    background: #ffffff;
-    border: 1px solid var(--border);
+    background: linear-gradient(145deg, #3A506B 0%, #2B3D54 100%);
+    border: 1px solid rgba(91, 192, 222, 0.35);
+    border-right: 5px solid var(--c-amber);
     border-radius: var(--radius-md);
-    padding: 1.25rem;
+    padding: 1.35rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    transition: all 0.2s ease;
-    border-right: 4px solid var(--primary);
+    gap: 0.8rem;
+    box-shadow: var(--specular-item);
+    transition: all 0.22s ease;
+}
+
+.task-item:nth-child(even) {
+    border-right-color: var(--c-cyan);
 }
 
 .task-item:hover {
-    box-shadow: var(--shadow-sm);
-    border-color: #cbd5e1;
-    border-right-color: var(--primary-hover);
+    transform: translateY(-2px);
+    border-color: rgba(244, 214, 176, 0.5);
+    box-shadow:
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.28),
+        0 10px 22px -4px rgba(5, 10, 24, 0.65);
 }
 
 .task-item-header {
@@ -335,36 +424,41 @@ body {
 .task-item-title-wrap {
     display: flex;
     align-items: baseline;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .task-id {
     font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-muted);
+    font-weight: 800;
+    color: var(--c-cyan);
+    background: rgba(11, 19, 43, 0.55);
+    padding: 0.15rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid rgba(91, 192, 222, 0.3);
 }
 
 .task-item-title {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .task-status-badge {
-    background-color: var(--warning-light);
-    color: var(--warning);
-    border: 1px solid #fde68a;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.2rem 0.65rem;
+    background-color: rgba(244, 214, 176, 0.16);
+    color: var(--c-cream);
+    border: 1px solid rgba(244, 214, 176, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.25rem 0.8rem;
     border-radius: 9999px;
     white-space: nowrap;
 }
 
 .task-item-desc {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.96rem;
+    color: #E2E8F0;
+    line-height: 1.75;
     white-space: pre-line;
 }
 
@@ -372,16 +466,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 0.6rem;
-    border-top: 1px dashed var(--border);
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    padding-top: 0.7rem;
+    border-top: 1px dashed rgba(244, 214, 176, 0.22);
+    font-size: 0.84rem;
+    color: var(--c-cream);
+    opacity: 0.9;
 }
 
 .task-date {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
 }
 
 /* Spinner */
@@ -402,8 +497,8 @@ body {
 .loader-spinner {
     width: 36px;
     height: 36px;
-    border: 3px solid var(--border);
-    border-top-color: var(--primary);
+    border: 3px solid rgba(91, 192, 222, 0.25);
+    border-top-color: var(--c-cyan);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin: 0 auto 1rem auto;
@@ -416,7 +511,14 @@ body {
 /* Footer */
 .app-footer {
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
     padding: 1rem 0;
+}
+
+/* پشتیبانی از حالت کنتراست بالا (Forced Colors Mode) طبق راهنمای Modern Web Guidance */
+@media (forced-colors: active) {
+    .card, .task-item, .form-input, .form-textarea, .btn, .badge, .task-status-badge {
+        border: 1px solid CanvasText;
+    }
 }
