@@ -16,13 +16,14 @@ htmlcov/
 *.sqlite
 *.sqlite3
 
-# OS / Editor files
+# OS / Editor / Archive files
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 *.swp
 *.swo
+*.zip
 
 # Environment variables
 .env
