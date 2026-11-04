@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+<!-- ۰. پیکربندی متاتگ‌ها، فونت فارسی و استایل‌های صفحه {#2ecc71, 11} -->
+<!-- ========================================== -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+<!-- ========================================== -->
+
 <body>
     <div class="page-container">
-        <!-- Header -->
+        <!-- ۱. بخش هدر برنامه و نشانگر اتصال پایگاه‌داده {#3498db, 11} -->
+        <!-- ========================================== -->
         <header class="app-header">
             <div class="header-content">
                 <div class="badge">اسپرینت اول • فاز اول</div>
@@ -21,17 +26,19 @@
                 <span class="status-indicator">پایگاه داده: SQLite متصل</span>
             </div>
         </header>
+        <!-- ========================================== -->
 
         <main class="main-layout">
-            <!-- فرم ثبت وظیفه جدید -->
+            <!-- ۲. بخش فرم ایجاد وظیفه جدید و اعتبارسنجی ورودی‌ها {#e67e22, 55} -->
+            <!-- ========================================== -->
             <section class="card form-card" aria-labelledby="form-heading">
                 <div class="card-header">
                     <span class="card-icon" aria-hidden="true">➕</span>
                     <h2 id="form-heading" class="card-title">ایجاد وظیفه جدید</h2>
                 </div>
                 
+                <!-- غیرفعال‌سازی پاپ‌آپ پیش‌فرض مرورگر: مدیریت یکپارچه خطاها با استایل سفارشی -->
                 <form id="task-form" novalidate>
-                    <!-- فیلد عنوان -->
                     <div class="form-group">
                         <label for="task-title" class="form-label">
                             عنوان وظیفه <span class="required-star" aria-hidden="true">*</span>
@@ -49,6 +56,7 @@
                             aria-errormessage="title-error"
                             aria-describedby="title-hint"
                         >
+                        <!-- تضمین دسترس‌پذیری خطا: استفاده از آیکون و متن همزمان به جای تکیه صرف بر رنگ -->
                         <div id="title-error" class="error-msg" role="alert">
                             <span class="error-icon" aria-hidden="true">⚠️</span>
                             <span>لطفاً عنوان وظیفه را وارد کنید (نمی‌تواند خالی یا فاصله باشد).</span>
@@ -56,7 +64,6 @@
                         <div id="title-hint" class="hint-text">عنوان وظیفه الزامی است و نباید بیش از ۱۵۰ کاراکتر باشد.</div>
                     </div>
 
-                    <!-- فیلد توضیحات -->
                     <div class="form-group">
                         <label for="task-desc" class="form-label">توضیحات (اختیاری)</label>
                         <textarea 
@@ -69,7 +76,6 @@
                         ></textarea>
                     </div>
 
-                    <!-- دکمه ثبت -->
                     <div class="form-actions">
                         <button type="submit" id="submit-btn" class="btn btn-primary">
                             <span class="btn-text">ثبت و ذخیره وظیفه</span>
@@ -78,8 +84,10 @@
                     </div>
                 </form>
             </section>
+            <!-- ========================================== -->
 
-            <!-- بخش نمایش فهرست وظایف -->
+            <!-- ۳. بخش نمایش فهرست وظایف، اعلان‌ها و وضعیت خالی {#1abc9c, 29} -->
+            <!-- ========================================== -->
             <section class="card list-card" aria-labelledby="list-heading">
                 <div class="card-header list-header">
                     <div class="list-title-wrap">
@@ -91,25 +99,23 @@
                     </div>
                 </div>
 
-                <!-- پیام بازخورد / توست -->
+                <!-- اطلاع‌رسانی پویا به صفحه‌خوان‌ها هنگام ثبت یا بروز خطا -->
                 <div id="alert-banner" class="alert-banner" role="status" aria-live="polite"></div>
 
-                <!-- لودینگ -->
                 <div id="loading-state" class="state-container hidden" aria-live="polite">
                     <div class="loader-spinner"></div>
                     <p>در حال بارگذاری وظایف از پایگاه داده...</p>
                 </div>
 
-                <!-- وضعیت خالی (Empty State) -->
                 <div id="empty-state" class="state-container hidden">
                     <div class="empty-icon" aria-hidden="true">📭</div>
                     <h3>هیچ وظیفه‌ای ثبت نشده است</h3>
                     <p>با استفاده از فرم بالا اولین وظیفه خود را اضافه کنید.</p>
                 </div>
 
-                <!-- لیست کارت‌های تسک -->
                 <div id="tasks-container" class="tasks-container"></div>
             </section>
+            <!-- ========================================== -->
         </main>
     </div>
 

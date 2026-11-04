@@ -1,15 +1,20 @@
+# ۰. فراخوانی ابزار تزریق وابستگی FastAPI و لایه‌های معماری {#2ecc71, 8}
+# ==========================================
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from app.infrastructure.database import get_db
 from app.domain.interfaces import ITaskRepository, ITaskService
 from app.infrastructure.sqlite_repository import SQLiteTaskRepository
 from app.services.task_service import TaskService
+# ==========================================
 
-
+# ۱. تامین‌کنندگان وابستگی مخزن و سرویس (Dependency Injection) {#f1c40f, 18}
+# ==========================================
 def get_task_repository(db: Session = Depends(get_db)) -> ITaskRepository:
     """
     تزریق مخزن داده به عنوان اینترفیس ITaskRepository
     """
+    # جداسازی لایه وب از ساخت مستقیم مخزن: تحویل نمونه متصل به نشست دیتابیس
     return SQLiteTaskRepository(db_session=db)
 
 
@@ -19,4 +24,6 @@ def get_task_service(
     """
     تزریق لایه سرویس به عنوان اینترفیس ITaskService
     """
+    # پیاده‌سازی اصل وارونگی وابستگی (DIP): تزریق مخزن انتزاعی به سرویس تجاری
     return TaskService(repository=repo)
+# ==========================================

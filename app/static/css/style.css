@@ -1,31 +1,33 @@
+/* ۰. تعریف متغیرهای پالت رنگی و سایه‌های سه‌بعدی (Design Tokens) {#2ecc71, 66} */
+/* ========================================== */
 :root {
     color-scheme: dark;
 
-    /* پالت رنگی اختصاصی انتخابی */
-    --c-midnight: #0B132B;      /* پس‌زمینه اصلی صفحه */
-    --c-oxford: #1C2541;        /* سطح کارت‌های اصلی */
-    --c-steel: #3A506B;         /* سطح کارت‌های وظایف، فیلدها و کادرها */
-    --c-cyan: #5BC0DE;          /* اکسنت فیروزه‌ای روشن */
-    --c-cream: #F4D6B0;         /* کرم طلایی ملایم برای عناوین و هایلایت‌ها */
-    --c-amber: #D97706;         /* نارنجی کهربایی برای دکمه اصلی و وضعیت */
+    /* پالت رنگی اختصاصی انتخابی: ترکیب سرمه‌ای کهکشانی، فیروزه‌ای و کهربایی */
+    --c-midnight: #0B132B;
+    --c-oxford: #1C2541;
+    --c-steel: #3A506B;
+    --c-cyan: #5BC0DE;
+    --c-cream: #F4D6B0;
+    --c-amber: #D97706;
 
-    /* متغیرهای کاربردی و کنتراست بالا برای خوانایی متن فارسی */
+    /* متغیرهای سطح و کنتراست بالا: تضمین خوانایی کامل متون فارسی روی زمینه تیره */
     --bg-page: var(--c-midnight);
     --bg-card: var(--c-oxford);
     --bg-elevated: #233052;
     --bg-input: rgba(11, 19, 43, 0.65);
 
-    --text-primary: #F8FAFC;    /* سفید یخی با کنتراست بالای 13:1 روی سرمه‌ای */
+    --text-primary: #F8FAFC;
     --text-heading: var(--c-cream);
-    --text-secondary: #CBD5E1;  /* خاکستری-آبی روشن با کنتراست بالای 7:1 */
-    --text-muted: #94A3B8;      /* کنتراست استاندارد بالای 4.5:1 */
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
 
     --primary: var(--c-amber);
     --primary-hover: #E88813;
     --accent-cyan: var(--c-cyan);
     --accent-cream: var(--c-cream);
 
-    /* وضعیت‌های اعتبارسنجی با کنتراست بالا روی پس‌زمینه تیره */
+    /* رنگ‌های معنایی وضعیت اعتبارسنجی: تفکیک واضح موفقیت و خطا */
     --success: #34D399;
     --success-bg: rgba(16, 185, 129, 0.16);
     --success-border: rgba(52, 211, 153, 0.55);
@@ -39,7 +41,7 @@
     --border-card: rgba(91, 192, 222, 0.32);
     --border-focus: var(--c-cyan);
 
-    /* افکت لبه‌های براق و برجسته سه‌بعدی (Specular 3D Borders) */
+    /* ایجاد عمق بصری در کارت‌ها: ترکیب سایه داخلی روشن در لبه بالا و سایه بیرونی */
     --specular-card:
         inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
         inset 0 2px 4px 0 rgba(91, 192, 222, 0.08),
@@ -62,7 +64,10 @@
     --radius-sm: 10px;
     --font-family: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+/* ========================================== */
 
+/* ۱. ریست استایل‌های پایه و چیدمان کلی صفحه (Base & Layout) {#3498db, 39} */
+/* ========================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -72,6 +77,7 @@
 body {
     font-family: var(--font-family);
     background-color: var(--bg-page);
+    /* نورپردازی محیطی دوگانه: ایجاد هاله‌های ملایم کهربایی و فیروزه‌ای در پس‌زمینه */
     background-image:
         radial-gradient(circle at 8% 22%, rgba(217, 119, 6, 0.16) 0%, transparent 42%),
         radial-gradient(circle at 92% 18%, rgba(91, 192, 222, 0.18) 0%, transparent 45%),
@@ -94,7 +100,15 @@ body {
     gap: 2rem;
 }
 
-/* Header با استایل برجسته سه‌بعدی و ترکیب سرمه‌ای، کرم و فیروزه‌ای */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+/* ========================================== */
+
+/* ۲. استایل هدر، بج فاز و نشانگر وضعیت دیتابیس (Header Section) {#9b59b6, 50} */
+/* ========================================== */
 .app-header {
     display: flex;
     justify-content: space-between;
@@ -133,13 +147,6 @@ body {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.app-subtitle {
-    font-size: 0.98rem;
-    color: #E2E8F0;
-    margin-top: 0.3rem;
-    font-weight: 400;
-}
-
 .status-indicator {
     background: rgba(91, 192, 222, 0.16);
     color: #A5F3FC;
@@ -150,15 +157,10 @@ body {
     border-radius: var(--radius-md);
     font-weight: 600;
 }
+/* ========================================== */
 
-/* Main Layout */
-.main-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-/* Card با لبه‌های براق و برجسته سه‌بعدی (Specular 3D) */
+/* ۳. استایل کارت‌های اصلی، فرم و قوانین اعتبارسنجی (Cards & Forms) {#e67e22, 110} */
+/* ========================================== */
 .card {
     background: linear-gradient(180deg, #212C4D 0%, var(--c-oxford) 100%);
     border-radius: var(--radius-lg);
@@ -188,7 +190,6 @@ body {
     color: var(--c-cream);
 }
 
-/* Form Styles */
 .form-group {
     margin-bottom: 1.35rem;
     display: flex;
@@ -235,7 +236,7 @@ body {
         0 0 0 3px rgba(91, 192, 222, 0.25);
 }
 
-/* Modern Web Guidance: :user-invalid and :user-valid rules */
+/* جلوگیری از نمایش خطای زودهنگام: اعمال استایل خطا فقط پس از تعامل کاربر */
 .form-input:user-invalid {
     border-color: var(--danger-border);
     background-color: var(--danger-bg);
@@ -259,7 +260,6 @@ body {
     border-radius: var(--radius-sm);
 }
 
-/* Show error message when user-invalid matches */
 .form-input:user-invalid + .error-msg,
 .form-group:has(.form-input:user-invalid) .error-msg {
     display: flex;
@@ -269,8 +269,10 @@ body {
     font-size: 0.84rem;
     color: var(--text-secondary);
 }
+/* ========================================== */
 
-/* Button با رنگ کهربایی (#D97706) و لبه براق سه‌بعدی */
+/* ۴. استایل دکمه‌ها، بنرهای اعلان و وضعیت‌های خالی/لودینگ {#1abc9c, 109} */
+/* ========================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -310,7 +312,6 @@ body {
     cursor: not-allowed;
 }
 
-/* Task List Section */
 .list-header {
     justify-content: space-between;
 }
@@ -332,7 +333,6 @@ body {
     border-radius: 9999px;
 }
 
-/* Alert Banner */
 .alert-banner {
     display: none;
     padding: 0.9rem 1.25rem;
@@ -357,7 +357,6 @@ body {
     border: 1px solid var(--danger-border);
 }
 
-/* State Containers (Loading, Empty) */
 .state-container {
     text-align: center;
     padding: 3rem 1.5rem;
@@ -381,8 +380,10 @@ body {
 .hidden {
     display: none !important;
 }
+/* ========================================== */
 
-/* Tasks Grid/List - استفاده از #3A506B و لبه‌های سه‌بعدی */
+/* ۵. استایل کارت‌های فهرست وظایف، انیمیشن‌ها و دسترس‌پذیری {#f1c40f, 133} */
+/* ========================================== */
 .tasks-container {
     display: flex;
     flex-direction: column;
@@ -402,6 +403,7 @@ body {
     transition: all 0.22s ease;
 }
 
+/* ایجاد تنوع رنگی چرخشی در لیست وظایف: تغییر رنگ نوار کناری کارت‌های زوج به فیروزه‌ای */
 .task-item:nth-child(even) {
     border-right-color: var(--c-cyan);
 }
@@ -479,7 +481,6 @@ body {
     gap: 0.35rem;
 }
 
-/* Spinner */
 .spinner {
     display: none;
     width: 18px;
@@ -508,17 +509,10 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* Footer */
-.app-footer {
-    text-align: center;
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    padding: 1rem 0;
-}
-
-/* پشتیبانی از حالت کنتراست بالا (Forced Colors Mode) طبق راهنمای Modern Web Guidance */
+/* پشتیبانی از حالت کنتراست بالا در سیستم‌عامل: حفظ مرز عناصر در حالت حذف سایه‌ها */
 @media (forced-colors: active) {
     .card, .task-item, .form-input, .form-textarea, .btn, .badge, .task-status-badge {
         border: 1px solid CanvasText;
     }
 }
+/* ========================================== */

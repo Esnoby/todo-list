@@ -1,8 +1,12 @@
+# ۰. فراخوانی موجودیت دامنه و اینترفیس‌های انتزاعی {#2ecc71, 5}
+# ==========================================
 from typing import List, Optional
 from app.domain.entities import TaskEntity
 from app.domain.interfaces import ITaskRepository, ITaskService
+# ==========================================
 
-
+# ۱. پیاده‌سازی لایه سرویس و قوانین تجاری مدیریت وظایف {#1abc9c, 33}
+# ==========================================
 class TaskService(ITaskService):
     """
     لایه سرویس بیزینس (Business Logic Service)
@@ -10,6 +14,7 @@ class TaskService(ITaskService):
     """
 
     def __init__(self, repository: ITaskRepository):
+        # رعایت اصل وارونگی وابستگی (DIP): دریافت مخزن از طریق اینترفیس انتزاعی
         self._repository = repository
 
     def create_task(self, title: str, description: Optional[str] = None) -> TaskEntity:
@@ -18,7 +23,7 @@ class TaskService(ITaskService):
         - وضعیت اولیه تمام وظایف الزاماً «انجام‌نشده» است.
         - عنوان باید غیرخالی و معتبر باشد.
         """
-        # ساخت موجودیت دامنه (درون سازنده این کلاس اعتبارسنجی‌های مربوط به رشته و خالی نبودن اجرا می‌شود)
+        # اعمال قوانین دامنه پیش از ذخیره‌سازی: ساخت موجودیت با وضعیت پیش‌فرض «انجام‌نشده»
         task_entity = TaskEntity(
             id=None,
             title=title,
@@ -31,4 +36,6 @@ class TaskService(ITaskService):
         """
         بازیابی فهرست تمام وظایف ثبت‌شده در سیستم
         """
+        # تفویض واکشی اطلاعات به لایه مخزن: حفظ جدایی منطق تجاری از کوئری‌های دیتابیس
         return self._repository.get_all()
+# ==========================================
