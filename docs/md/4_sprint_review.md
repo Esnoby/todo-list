@@ -2,7 +2,7 @@
 
 **پروژه:** سامانه مدیریت وظایف (Todo App)  
 **دوره:** پایان اسپرینت اول (هفته دوم)  
-**اعضای تیم:** رضا (Product Owner & Frontend) و آنتی (System Architect & Backend)  
+**اعضای تیم:** رضا صفری (Product Owner & Full-Stack / Core Developer) و امیرحسین میرزایی (System Architect & Database Engineer)  
 
 ---
 

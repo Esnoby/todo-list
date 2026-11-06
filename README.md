@@ -1,6 +1,7 @@
 # سامانه مدیریت وظایف (Todo App) — فاز اول: اسپرینت اول
 
 > **پروژه درس مهندسی نرم‌افزار**  
+> **اعضای تیم توسعه:** رضا صفری (Product Owner & Full-Stack / Core Developer) و امیرحسین میرزایی (System Architect & Database Engineer)  
 > **متدولوژی توسعه:** چابک (Scrum)  
 > **معماری:** شی‌گرا (OOP) و لایه‌ای بر پایه اصول پنج‌گانه SOLID  
 
@@ -47,7 +48,10 @@ todo-list/
 │   │   ├── css/style.css
 │   │   └── js/app.js
 │   └── main.py                  # نقطه ورود اصلی برنامه FastAPI
-├── docs/                        # مستندات کامل فرآیند اسکرام
+├── docs/                        # مستندات کامل فرآیند اسکرام (در سه فرمت PDF، Word و Markdown)
+│   ├── pdf/                     # نسخه نهایی مستندات با فرمت PDF
+│   ├── word/                    # نسخه قابل ویرایش مستندات با فرمت DOCX
+│   └── md/                      # نسخه متنی مستندات با فرمت Markdown
 ├── tests/                       # مجموعه تست‌های خودکار واحد و یکپارچگی
 │   └── test_tasks.py
 ├── run.py                       # اسکریپت هوشمند یافتن پورت آزاد و اجرای خودکار برنامه
@@ -65,13 +69,16 @@ todo-list/
 ---
 
 ## ۴. اقلام تحویلی اسکرام (Scrum Deliverables)
-تمام مستندات تحویلی در پوشه [`docs/`](docs/) با جزئیات کامل تدوین شده‌اند:
-* [مستند ۱: فهرست محصول (Product Backlog)](docs/1_product_backlog.md)
-* [مستند ۲: فهرست اسپرینت اول و DoD (Sprint Backlog)](docs/2_sprint_backlog.md)
-* [مستند ۳: گزارش ۴ جلسه هماهنگی (Sync Meetings)](docs/3_sync_meetings.md)
-* [مستند ۴: گزارش جلسه بازبینی اسپرینت اول (Sprint Review)](docs/4_sprint_review.md)
-* [مستند ۵: گزارش جلسه بازنگری عملکرد و اقدام اصلاحی (Sprint Retrospective)](docs/5_sprint_retrospective.md)
-* [گزارش جامع تجمیعی اسپرینت اول](docs/گزارش_جامع_پروژه_مهندسی_نرم_افزار_اسپرینت_اول.md)
+تمام مستندات تحویلی در پوشه [`docs/`](docs/) در سه فرمت **PDF**، **Word (`.docx`)** و **Markdown (`.md`)** تدوین و دسته‌بندی شده‌اند:
+
+| عنوان مستند | نسخه PDF | نسخه Word | نسخه Markdown |
+| :--- | :---: | :---: | :---: |
+| **مستند ۱:** فهرست محصول (Product Backlog) | [مشاهده PDF](<docs/pdf/مستند ۱_ فهرست محصول (Product Backlog) - سامانه مدیریت وظایف.pdf>) | [دانلود Word](<docs/word/مستند ۱_ فهرست محصول (Product Backlog) - سامانه مدیریت وظایف.docx>) | [مشاهده MD](docs/md/1_product_backlog.md) |
+| **مستند ۲:** فهرست اسپرینت اول و DoD (Sprint Backlog) | [مشاهده PDF](<docs/pdf/مستند ۲_ فهرست اسپرینت اول (Sprint Backlog) - سامانه مدیریت وظایف.pdf>) | [دانلود Word](<docs/word/مستند ۲_ فهرست اسپرینت اول (Sprint Backlog) - سامانه مدیریت وظایف.docx>) | [مشاهده MD](docs/md/2_sprint_backlog.md) |
+| **مستند ۳:** گزارش جلسات هماهنگی تیم (Sync Meetings) | [مشاهده PDF](<docs/pdf/مستند ۳_ گزارش جلسات هماهنگی تیم (Sync Meetings) - سامانه مدیریت وظایف.pdf>) | [دانلود Word](<docs/word/مستند ۳_ گزارش جلسات هماهنگی تیم (Sync Meetings) - سامانه مدیریت وظایف.docx>) | [مشاهده MD](docs/md/3_sync_meetings.md) |
+| **مستند ۴:** گزارش جلسه بازبینی اسپرینت اول (Sprint Review) | [مشاهده PDF](<docs/pdf/مستند ۴_ گزارش جلسه بازبینی اسپرینت اول (Sprint Review) - سامانه مدیریت وظایف.pdf>) | [دانلود Word](<docs/word/مستند ۴_ گزارش جلسه بازبینی اسپرینت اول (Sprint Review) - سامانه مدیریت وظایف.docx>) | [مشاهده MD](docs/md/4_sprint_review.md) |
+| **مستند ۵:** گزارش جلسه بازنگری عملکرد (Sprint Retrospective) | [مشاهده PDF](<docs/pdf/مستند ۵_ گزارش جلسه بازنگری عملکرد (Sprint Retrospective) - سامانه مدیریت وظایف.pdf>) | [دانلود Word](<docs/word/مستند ۵_ گزارش جلسه بازنگری عملکرد (Sprint Retrospective) - سامانه مدیریت وظایف.docx>) | [مشاهده MD](docs/md/5_sprint_retrospective.md) |
+| **گزارش جامع تجمیعی فاز اول (اسپرینت اول)** | [مشاهده PDF](<docs/pdf/گزارش جامع فاز اول (اسپرینت اول) .pdf>) | [دانلود Word](<docs/word/گزارش جامع فاز اول (اسپرینت اول) .docx>) | [مشاهده MD](<docs/md/پروژه درس مهندسی نرم_افزار — گزارش جامع فاز اول (اسپرینت اول) - سامانه مدیریت وظایف.md>) |
 
 ---
 
