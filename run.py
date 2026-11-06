@@ -1,5 +1,6 @@
-# ۰. فراخوانی کتابخانه‌های شبکه، مرورگر و وب‌سرور Uvicorn {#2ecc71, 7}
+# ۰. فراخوانی کتابخانه‌های شبکه، مرورگر و وب‌سرور Uvicorn {#2ecc71, 8}
 # ==========================================
+import os
 import socket
 import threading
 import time
@@ -29,15 +30,16 @@ def find_available_port(preferred_ports: list[int]) -> int:
         return sock.getsockname()[1]
 # ==========================================
 
-# ۲. راه‌اندازی سرور برنامه و باز کردن خودکار مرورگر {#1abc9c, 20}
+# ۲. راه‌اندازی سرور برنامه و باز کردن خودکار مرورگر {#1abc9c, 21}
 # ==========================================
 def main():
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     port = find_available_port([8000, 8100, 8080, 5000, 3000])
     url = f"http://127.0.0.1:{port}"
 
     print("=" * 55)
-    print(f"🚀 Todo App Server is starting on: {url}")
-    print(f"📘 Swagger API Documentation:      {url}/docs")
+    print(f"[+] Todo App Server is starting on: {url}")
+    print(f"[*] Swagger API Documentation:      {url}/docs")
     print("=" * 55)
 
     # باز کردن خودکار آدرس برنامه در مرورگر پیش‌فرض یک ثانیه پس از استارت سرور
